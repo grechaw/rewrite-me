@@ -1,0 +1,29 @@
+<rewriter xmlns="http://marklogic.com/xdmp/rewriter">
+    <match-path matches="^/">
+        <match-query-param name="javascript">
+            <error code="REST-INVALIDPARAM"
+                data1="javascript. The x-www-form-urlencoded payload must specify the JavaScript to eval."/> 
+        </match-query-param>
+        <match-query-param name="xquery">
+            <error code="REST-INVALIDPARAM"
+                data1="xquery. The x-www-form-urlencoded payload must specify the XQuery to eval."/> 
+        </match-query-param>
+        <match-query-param name="database">
+            <set-database checked="true">$0</set-database>
+        </match-query-param>
+        <match-query-param name="modules-database">
+            <set-modules-database checked="true">$0</set-modules-database>
+        </match-query-param>
+        <match-query-param name="modules-root">
+            <set-modules-root checked="true">$0</set-modules-root>
+        </match-query-param>
+        <match-query-param name="txid">
+            <set-transaction>$0</set-transaction>
+            <set-transaction-mode>update</set-transaction-mode>
+        </match-query-param>
+        <match-query-param name="defaultxquery">
+            <set-variable></set-variable>
+        </match-query-param>
+        <dispatch>yup.xqy</dispatch> 
+    </match-path>
+</rewriter>
